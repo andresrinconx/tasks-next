@@ -10,7 +10,6 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,7 +21,6 @@ jobs:
     needs: lint
     name: Deploy
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -30,5 +28,7 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Deploy
-        run: echo "Deploying..."
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+      - name: Deploy to Vercel
+        run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }}
