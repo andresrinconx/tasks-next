@@ -2,20 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+.loading-spinner {
+  border: 3px solid transparent;
+  border-top: 3px solid #a19e9b;
+  border-radius: 75%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1.5s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  100% {
+    transform: rotate(360deg);
+  }
 }
